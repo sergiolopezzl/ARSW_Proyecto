@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function SalaDeApuestas() {
+function SalaDeSubastas() {
     const [nombre, setNombre] = useState('');
     const [cantidadApostada, setCantidadApostada] = useState(0);
 
@@ -38,6 +38,6 @@ function SalaDeApuestas() {
     );
 }
 
-export default SalaDeApuestas;
+export default SalaDeSubastas;
 
 

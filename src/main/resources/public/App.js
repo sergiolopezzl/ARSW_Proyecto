@@ -1,7 +1,7 @@
 // En App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SalaDeApuestas from './SalaDeApuestas';
+import SalaDeSubastas from './SalaDeSubastas';
 
 function App() {
     return (
@@ -12,8 +12,8 @@ function App() {
                 </header>
                 <main>
                     <Switch>
-                        <Route path="/sala" component={SalaDeApuestas} />
-                        {/* Otras rutas si las tienes */}
+                        <Route path="/sala" component={SalaDeSubastas} />
+
                     </Switch>
                 </main>
             </div>
