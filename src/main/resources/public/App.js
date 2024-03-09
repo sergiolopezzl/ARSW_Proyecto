@@ -1,24 +1,43 @@
-// En App.js
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import SalaDeSubastas from './SalaDeSubastas';
+$(document).ready(function() {
+    // Función para cargar todas las subastas al cargar la página
+    function cargarSubastas() {
+        $.get("/api", function(data) {
+            $("#subastas-list").empty();
+            data.forEach(function(subasta) {
+                $("#subastas-list").append("<li>" + subasta.nombre + " - Precio: $" + subasta.precioActual + "</li>");
+            });
+        });
+    }
 
-function App() {
-    return (
-        <Router>
-            <div className="App">
-                <header className="App-header">
-                    <h1>¡Bienvenido a mi aplicación de apuestas!</h1>
-                </header>
-                <main>
-                    <Switch>
-                        <Route path="/sala" component={SalaDeSubastas} />
+    // Llamamos a la función cargarSubastas al cargar la página para obtener las subastas existentes
+    cargarSubastas();
 
-                    </Switch>
-                </main>
-            </div>
-        </Router>
-    );
-}
+    // Evento para enviar el formulario de crear subasta
+    $("#crear-subasta-form").submit(function(event) {
+        event.preventDefault();
+        var nombre = $("#nombre").val();
+        var precio = $("#precio").val();
+        var nuevaSubasta = {
+            nombre: nombre,
+            precioActual: precio
+        };
+        crearSubasta(nuevaSubasta);
+    });
 
-export default App;
+    // Función para crear una nueva subasta
+    function crearSubasta(subasta) {
+        $.ajax({
+            type: "POST",
+            url: "/api",
+            contentType: "application/json",
+            data: JSON.stringify(subasta),
+            success: function(response) {
+                console.log("Nueva subasta creada:", response);
+                cargarSubastas(); // Volvemos a cargar las subasta después de crear una nueva
+            },
+            error: function(err) {
+                console.error("Error al crear una nueva subasta:", err);
+            }
+        });
+    }
+});
