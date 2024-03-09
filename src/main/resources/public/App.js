@@ -1,13 +1,17 @@
 $(document).ready(function() {
     // Función para cargar todas las subastas al cargar la página
     function cargarSubastas() {
-        $.get("/api", function(data) {
-            $("#subastas-list").empty();
-            data.forEach(function(subasta) {
-                $("#subastas-list").append("<li>" + subasta.nombre + " - Precio: $" + subasta.precioActual + "</li>");
+            $.get("/api", function(data) {
+                $("#subastas-list").empty();
+                data.forEach(function(subasta) {
+                    var subastaItem = "<li>Nombre: " + subasta.nombre + " - Descripción: " + subasta.descripcion +
+                                      " - Usuario: " + subasta.usuario + " - Cantidad: " + subasta.cantidad +
+                                      " - Evento: " + subasta.evento + " - Precio Inicial: $" + subasta.precioInicial +
+                                      " - Precio Actual: $" + subasta.precioActual + " - Activa: " + subasta.activa + "</li>";
+                    $("#subastas-list").append(subastaItem);
+                });
             });
-        });
-    }
+        }
 
     // Llamamos a la función cargarSubastas al cargar la página para obtener las subastas existentes
     cargarSubastas();
@@ -16,10 +20,23 @@ $(document).ready(function() {
     $("#crear-subasta-form").submit(function(event) {
         event.preventDefault();
         var nombre = $("#nombre").val();
-        var precio = $("#precio").val();
+        var descripcion = $("#descripcion").val();
+        var usuario = $("#usuario").val();
+        var cantidad = parseFloat($("#cantidad").val());
+        var evento = $("#evento").val();
+        var precioInicial = parseFloat($("#precioInicial").val());
+        var precioActual = parseFloat($("#precioActual").val());
+        var activa = $("#activa").is(":checked");
+
         var nuevaSubasta = {
             nombre: nombre,
-            precioActual: precio
+            descripcion: descripcion,
+            usuario: usuario,
+            cantidad: cantidad,
+            evento: evento,
+            precioInicial: precioInicial,
+            precioActual: precioActual,
+            activa: activa
         };
         crearSubasta(nuevaSubasta);
     });
