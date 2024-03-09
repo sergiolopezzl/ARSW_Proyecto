@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/apuestas")
+@RequestMapping("/api")
 public class ApuestaController {
 
     @Autowired
@@ -25,5 +25,5 @@ public class ApuestaController {
         return apuestaRepository.save(apuesta);
     }
 
-    // Puedes agregar más métodos para actualizar, eliminar, etc.
+
 }
