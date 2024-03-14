@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // Función para cargar todas las subastas al cargar la página
     function cargarSubastas() {
-            $.get("/api", function(data) {
+            $.get("/api/subastas", function(data) {
                 $("#subastas-list").empty();
                 data.forEach(function(subasta) {
                     var subastaItem = "<li>Nombre: " + subasta.nombre + " - Descripción: " + subasta.descripcion +
@@ -45,7 +45,7 @@ $(document).ready(function() {
     function crearSubasta(subasta) {
         $.ajax({
             type: "POST",
-            url: "/api",
+            url: "/api/subastas",
             contentType: "application/json",
             data: JSON.stringify(subasta),
             success: function(response) {
