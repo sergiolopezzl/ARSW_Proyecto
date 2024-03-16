@@ -98,7 +98,7 @@ public class Subastas {
         this.precioActual = precioActual;
     }
 
-    public boolean isActiva() {
+    public boolean getActiva() {
         return activa;
     }
 
