@@ -22,6 +22,10 @@ public class Usuario {
         this.saldo = saldo;
     }
 
+    public Usuario() {
+
+    }
+
     public Long getId() {
         return id;
     }
