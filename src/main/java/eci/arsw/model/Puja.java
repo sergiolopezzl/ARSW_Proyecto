@@ -22,6 +22,10 @@ public class Puja {
         this.subastaId = subastaId;
     }
 
+    public Puja() {
+
+    }
+
     public Long getId() {
         return id;
     }

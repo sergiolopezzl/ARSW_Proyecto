@@ -37,8 +37,10 @@ public class UsuarioController {
 
         usuario.setNombre(usuarioDetails.getNombre());
         usuario.setCorreoElectronico(usuarioDetails.getCorreoElectronico());
-        usuario.setContraseña(usuarioDetails.getContraseña());
+        usuario.setContrasena(usuarioDetails.getContrasena());
         usuario.setSaldo(usuarioDetails.getSaldo());
+        usuario.setIdDeApuesta(usuarioDetails.getIdDeApuesta());
+        usuario.setGasto(usuarioDetails.getGasto());
 
         final Usuario updatedUsuario = usuarioRepository.save(usuario);
         return ResponseEntity.ok(updatedUsuario);

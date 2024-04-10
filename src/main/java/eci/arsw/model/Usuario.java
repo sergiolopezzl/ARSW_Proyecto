@@ -11,15 +11,19 @@ public class Usuario {
 
     private String nombre;
     private String correoElectronico;
-    private String contraseña;
+    private String contrasena;
     private double saldo;
+    private Long idDeApuesta;
+    private double gasto;
 
-    public Usuario(Long id, String nombre, String correoElectronico, String contraseña, double saldo) {
+    public Usuario(Long id, String nombre, String correoElectronico, String contrasena, double saldo, Long idDeApuesta, double gasto) {
         this.id = id;
         this.nombre = nombre;
         this.correoElectronico = correoElectronico;
-        this.contraseña = contraseña;
+        this.contrasena = contrasena;
         this.saldo = saldo;
+        this.idDeApuesta = idDeApuesta;
+        this.gasto = gasto;
     }
 
     public Usuario() {
@@ -50,12 +54,12 @@ public class Usuario {
         this.correoElectronico = correoElectronico;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     public double getSaldo() {
@@ -64,5 +68,21 @@ public class Usuario {
 
     public void setSaldo(double saldo) {
         this.saldo = saldo;
+    }
+
+    public Long getIdDeApuesta() {
+        return idDeApuesta;
+    }
+
+    public void setIdDeApuesta(Long idDeApuesta) {
+        this.idDeApuesta = idDeApuesta;
+    }
+
+    public double getGasto() {
+        return gasto;
+    }
+
+    public void setGasto(double gasto) {
+        this.gasto = gasto;
     }
 }
