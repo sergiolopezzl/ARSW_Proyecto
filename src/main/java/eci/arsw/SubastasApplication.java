@@ -8,5 +8,8 @@ public class SubastasApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SubastasApplication.class, args);
+
+
     }
+
 }
