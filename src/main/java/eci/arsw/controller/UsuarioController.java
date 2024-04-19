@@ -10,6 +10,7 @@ import eci.arsw.repository.UsuarioRepository;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -56,5 +57,11 @@ public class UsuarioController {
         Map<String, Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
+    }
+
+    @GetMapping("/usuarios/last-id")
+    public Long obtenerUltimoIdUsuario() {
+        Optional<Usuario> ultimoUsuario = usuarioRepository.findTopByOrderByIdDesc();
+        return ultimoUsuario.map(Usuario::getId).orElse(null);
     }
 }
