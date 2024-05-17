@@ -16,9 +16,11 @@ import java.util.Optional;
 @RequestMapping("/api")
 @CrossOrigin(origins = "http://localhost:4200")
 public class UsuarioController {
-
+    
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    
 
     @GetMapping("/usuarios")
     public List<Usuario> getAllUsuarios() {

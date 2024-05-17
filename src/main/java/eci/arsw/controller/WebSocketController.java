@@ -1,19 +1,19 @@
 package eci.arsw.controller;
 
+import eci.arsw.model.ChatMessage;
 import eci.arsw.model.Usuario;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class WebSocketController {
-
     @MessageMapping("/chat/{roomId}")
     @SendTo("/topic/{roomId}")
-    public Usuario chat(@DestinationVariable String roomId, Usuario usuario) {
-        System.out.println(usuario);
-        // Aquí puedes realizar operaciones con el usuario recibido, como guardar en la base de datos, etc.
-        return usuario; // Retornamos el usuario recibido de vuelta
+    public ChatMessage chat(@DestinationVariable String roomId, ChatMessage message) {
+        System.out.println(message);
+        return new ChatMessage(message.getMessage(), message.getUser());
     }
 }
