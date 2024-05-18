@@ -42,7 +42,7 @@ public class ProductController {
 	
 	@Autowired
 	private UsuarioRepository userDao;
-
+	
 	@PostMapping("add")
 	public ResponseEntity<ProductResponseDto> addProduct(@RequestBody Product product) {
 
